@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concierto TØP</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/bootstrap.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/main-2023.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/aos.css">
+    <link rel="icon" type="image/png" href="IMG/21-Pilots-Logo-2019.png">
+<style>
+    body{
+        background-image: url(IMG/34thEAx.jpg);
+        background-attachment: fixed;
+    }
+</style>
+<script>
+    function validarFormulario() {
+        var rut = document.getElementById("rut").value;
+        if (rut == "" || rut == null) {
+            alert("Debe ingresar un RUT válido");
+            return false;
+        }
+        var nombre = document.getElementById("nombre").value;
+        if (nombre == "" || nombre == null) {
+            alert("Debe ingresar un nombre válido");
+            return false;
+        }
+        var edad = document.getElementById("edad").value;
+        if (edad == "" || edad == null || isNaN(edad) || edad < 0) {
+            alert("Debe ingresar una edad válida");
+            return false;
+        }
+        var entradas = document.getElementById("cantidadDeEntradas").value;
+        if (entradas == "" || entradas == null || isNaN(entradas) || entradas < 0) {
+            alert("Debe ingresar una cantidad de entradas válida");
+            return false;
+        }
+        var fecha = document.getElementById("fecha").value;
+        if (fecha == "" || fecha == null) {
+            alert("Debe ingresar una fecha válida");
+            return false;
+        }
+        var asiento = document.getElementById("Asiento").value;
+        if (asiento == "" || asiento == null) {
+            alert("Debe seleccionar un asiento válido");
+            return false;
+        }
+        return true;
+    }
+
+    function verificarSesion() {
+        fetch('/getUserSession')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.correo) {
+                    window.location.href = 'index.html';
+                } else if (data.rol != 1) {
+                    window.location.href = 'home.html';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la sesión:', error);
+                window.location.href = 'index.html';
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        verificarSesion();
+
+        document.getElementById("formulario-entrada").addEventListener("submit", function(event) {
+            if (!validarFormulario()) {
+                event.preventDefault();
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const entradaId = urlParams.get('id');
+        const idInput = document.getElementById('entrada-id');
+        const rutInput = document.getElementById('rut');
+        const nombreInput = document.getElementById('nombre');
+        const edadInput = document.getElementById('edad');
+        const cantidadDeEntradasInput = document.getElementById('cantidadDeEntradas');
+        const fechaInput = document.getElementById('fecha');
+        const AsientoInput = document.getElementById('Asiento');
+
+        fetch('/modificarEntrada/' + entradaId)
+            .then(response => response.json())
+            .then(entrada => {
+                idInput.value = entrada.id;
+                rutInput.value = entrada.Rut;
+                nombreInput.value = entrada.nombre;
+                edadInput.value = entrada.edad;
+                cantidadDeEntradasInput.value = entrada.cantidadDeEntradas;
+                fechaInput.value = entrada.Fecha.split('T')[0];
+                AsientoInput.value = entrada.Asiento;
+            });
+    });
+</script>
+</head>
+<body>
+    <div class="principalContainer">
+        <div class="container">
+            <header>
+                <h1>Twenty One Pilots</h1>
+                <nav>
+                    <ul>
+                        <li><a href="Index.html">Inicio</a></li>
+                        <li><a href="songs.html">Canciones</a></li>
+                        <li><a href="ubicacion.html">Ubicación</a></li>
+                        <li><a href="listarEntradas.html">Tabla Entradas</a></li>
+                        <li class="logout-container"><a href="/logout" class="button">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <h2>Modificar Entrada</h2>
+            <form id="formulario-entrada" action="/modificar_entrada" method="POST">
+                <input type="hidden" id="entrada-id" name="id">
+                <div>
+                    <label for="rut">RUT:</label>
+                    <input type="text" id="rut" name="rut" required="">
+                </div>
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required="">
+                </div>
+                <div>
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" required="">
+                </div>
+                <div>
+                    <label for="cantidadDeEntradas">Cantidad de entradas:</label>
+                    <input type="text" id="cantidadDeEntradas" name="cantidadDeEntradas" required="">
+                </div>
+                <div>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required="">
+                </div>
+                <div>
+                    <label for="Asiento">Asiento:</label>
+                    <select id="Asiento" name="Asiento" required="">
+                        <option value="Galeria">Galería</option>
+                        <option value="Cancha">Cancha</option>
+                        <option value="Andes">Andes</option>
+                        <option value="Pacífico_lateral">Pacífico lateral</option>
+                        <option value="Pacífico_bajo">Pacífico bajo</option>
+                        <option value="Pacífico_alto_norte">Pacífico alto norte</option>
+                        <option value="Pacífico_alto_sur">Pacífico alto sur</option>
+                        <option value="Pacífico_medio">Pacífico medio</option>
+                    </select>
+                </div>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

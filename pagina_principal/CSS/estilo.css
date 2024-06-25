@@ -1,0 +1,283 @@
+body {
+  font-family: Arial, sans-serif; 
+  margin: 0; 
+  padding: 0;
+}
+.container{
+  color: #ffd900;
+  background-color: rgb(19, 18, 18);
+  border: solid 2px #ffd900;
+  padding: 1px;
+}
+
+.principalContainer{
+  padding: 20px;
+}
+
+h1{
+  text-align: center;
+}
+
+header {
+  display: flex; 
+  border-bottom: 2px solid #ffd900;
+  margin-left: 20px; 
+  background-color: rgb(19, 18, 18);
+}
+nav ul {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  padding: 13px;
+}
+
+.logout-button {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+h2 {
+  color: #ffd900;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+  border-bottom: 2px solid #ffd900; 
+  padding-bottom: 10px;
+  background-color: rgb(19, 18, 18); 
+}
+
+h3{
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 20px; 
+  border-bottom: 2px solid #ffd900; 
+  background-color: rgb(19, 18, 18); 
+}
+
+.item span {
+  font-size: 25px;
+  color: #ffd900; 
+  margin-right: 90px; 
+  font-weight: bold; 
+}
+
+.item img{
+  width: 20px;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+
+.mEstadio img{
+  margin-left: 20%;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-bottom: 20px; 
+ 
+}
+
+table{
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #ffd900;
+}
+
+.sectionTable th{
+  border: 2px solid #ffd900;
+  text-align: center;
+  background-color: rgb(5, 5, 5);
+}
+
+.sectionTable td{
+  border: 2px solid #ffd900;
+  text-align: center;
+}
+
+.sectionTable img{
+  width: 200px;
+}
+
+.sectionTable video{
+  width: 500px;
+}
+
+tbody {
+  background-color: rgb(49, 49, 49); /* Change the background color to dark gray */
+}
+
+.detalles-tbody {
+  background-color: #f9f9f9; /* Change the background color to a light gray */
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Add some space between rows */
+}
+
+iframe{
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-left: 25%;    
+}
+
+footer{
+  color: #ffd900;
+  text-align: center;
+  display: flex; 
+  border: 2px solid;
+  background-color: rgb(19, 18, 18);
+}
+
+p{
+  padding: 20px;
+  display: inline;
+  font-weight: bold;
+}
+
+.botonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.botonEntrada {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffd900;
+  color: black;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.botonEntrada:hover {
+  background-color: black;
+  color: #ffd900;
+}
+
+#formulario-entrada {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: black;
+  color: #ffd900;
+  border-radius: 10px;
+}
+
+#formulario-entrada div {
+  margin-bottom: 15px;
+}
+
+#formulario-entrada label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#formulario-entrada input[type="text"],
+#formulario-entrada input[type="number"],
+#formulario-entrada select,
+#formulario-entrada input[type="date"],
+#formulario-entrada input[type="submit"] 
+{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ffd900;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#formulario-entrada input[type="submit"] {
+  background-color: black;
+  color: yellow;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#formulario-entrada input[type="submit"]:hover {
+  background-color: #ffd900;
+  color: black;
+}
+
+.formularioAgregar {
+  padding: 20px;
+}
+
+button {
+  background-color: black;
+  color: #ffd900;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #ffd900;
+  color: black;
+}
+
+td {
+  padding: 1px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Ancho del formulario */
+  margin: 50px auto; /* Margen automático para centrar */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffd900;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffd900;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #ffd900;
+  background-color: rgb(19, 18, 18);
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+  background-color: black;
+  color: #ffd900;
+}
+
+.btn-primary:hover {
+  background-color: #ffd900;
+  color: black;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/bootstrap.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/main-2023.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/aos.css">
+    <link rel="icon" type="image/png" href="IMG/21-Pilots-Logo-2019.png">
+</head>
+<style>
+    body{
+        background-image: url(IMG/34thEAx.jpg);
+        background-attachment: fixed;
+    }
+</style>
+<body>
+    <div class="principalContainer">
+        <div class="container">
+            <header>
+                <h1>Twenty One Pilots</h1>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Inicio</a></li>
+                        <li><a href="songs.html">Canciones</a></li>
+                        <li><a href="ubicacion.html">Ubicación</a></li>
+                        <li id="tabla-entradas" style="display: none;"><a href="listarEntradas.html">Tabla Entradas</a></li>
+                        <li class="logout-container"><a href="/logout" class="button">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.116678015502!2d-70.61075181796932!3d-33.46581738535237!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cfed639ab813%3A0xb92488060556a1df!2sEstadio%20Nacional%20Julio%20Mart%C3%ADnez%20Pr%C3%A1danos!5e0!3m2!1ses-419!2scl!4v1713045964884!5m2!1ses-419!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        fetch('/getUserSession')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.correo) {
+                    window.location.href = 'index.html';
+                } else if (data.rol == 1) {
+                    document.getElementById('tabla-entradas').style.display = 'inline';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la sesión:', error);
+                window.location.href = 'index.html';
+            });
+    </script>
+</body>
+</html>

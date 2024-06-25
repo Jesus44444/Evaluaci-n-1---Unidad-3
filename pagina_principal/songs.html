@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canciones</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/bootstrap.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/main-2023.css">
+    <link rel="stylesheet" href="https://static.puntoticket.com/especiales/landing-common/css/aos.css">
+    <link rel="icon" type="image/png" href="IMG/21-Pilots-Logo-2019.png">
+</head>
+<style>
+    body{
+        background-image: url(IMG/34thEAx.jpg);
+        background-attachment: fixed;
+    }
+</style>
+<body>
+    <div class="principalContainer">
+        <div class="container">
+            <header>
+                <h1>Twenty One Pilots</h1>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Inicio</a></li>
+                        <li><a href="songs.html">Canciones</a></li>
+                        <li><a href="ubicacion.html">Ubicación</a></li>
+                        <li id="tabla-entradas" style="display: none;"><a href="listarEntradas.html">Tabla Entradas</a></li>
+                        <li class="logout-container"><a href="/logout" class="button">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section class="sectionTable">
+                <table>
+                    <tr>
+                        <th>Album Cover</th>
+                        <th>Sneak Peek</th>
+                        <th>Album en Spotify</th>
+                    </tr>
+                    <tr>
+                        <td><img src="IMG/blurryfacea.jpg"></td>
+                        <td>
+                            <video controls width="640" height="360">
+                            <source src="VIDEO/twenty one pilots_ Message Man.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td><a href="https://open.spotify.com/intl-es/album/3cQO7jp5S9qLBoIVtbkSM1">Blurryface</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="IMG/trench.jpg"></td>
+                        <td>
+                            <video controls width="640" height="360">
+                            <source src="VIDEO/twenty one pilots_ Jumpsuit.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td><a href="https://open.spotify.com/intl-es/album/621cXqrTSSJi1WqDMSLmbL">Trench</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="IMG/vessel.jpg"></td>
+                        <td>
+                            <video controls width="640" height="360">
+                            <source src="VIDEO/Twenty One Pilots - Trees .mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td><a href="https://open.spotify.com/intl-es/album/2r2r78NE05YjyHyVbVgqFn">Vessel</a></td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        fetch('/getUserSession')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.correo) {
+                    window.location.href = 'index.html';
+                } else if (data.rol == 1) {
+                    document.getElementById('tabla-entradas').style.display = 'inline';
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar la sesión:', error);
+                window.location.href = 'index.html';
+            });
+    </script>
+</body>
+</html>
